@@ -1,0 +1,15 @@
+# 告诉EditorConfig插件，这是根文件，不用继续往上查找
+root = true
+
+[*] # 针对所有文件
+charset = utf-8  # 就是规定了采用哪种字符编码
+indent_style = space
+indent_size = 2
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+singleQuote=true
+
+[*.md] # 仅针对 md 文件
+insert_final_newline = false
+trim_trailing_whitespace = false

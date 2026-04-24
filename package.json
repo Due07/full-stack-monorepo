@@ -1,0 +1,20 @@
+{
+  "name": "full-stack-monorepo",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "dev:web": "pnpm --dir apps/liberty-web dev",
+    "build:web": "pnpm --dir apps/liberty-web build",
+
+    "dev:ui": "pnpm --dir apps/liberty-ui dev",
+    "build:ui": "pnpm --dir apps/liberty-ui build",
+
+    "dev:backend": "pnpm --dir backend start:dev",
+    "build:backend": "pnpm --dir backend build",
+    "lint:backend": "pnpm --dir backend lint",
+    "test:backend": "pnpm --dir backend test"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

@@ -1,0 +1,73 @@
+import js from '@eslint/js';
+import globals from 'globals';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
+import tseslint from 'typescript-eslint';
+
+export default tseslint.config(
+  {
+    ignores: ['dist', '.umi', 'coverage'],
+  },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{js,ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+      'react-hooks': reactHooks,
+      'react-refresh': reactRefresh,
+    },
+    rules: {
+      ...reactHooks.configs.recommended.rules,
+      semi: [2, 'always'],
+      'max-len': ['error', { code: 150, ignoreUrls: true }],
+      'no-multiple-empty-lines': [1, { max: 1, maxEOF: 0, maxBOF: 0 }],
+      camelcase: 2,
+      'use-isnan': 2,
+      'linebreak-style': [0, 'error', 'windows'],
+      'no-console': 0,
+      'no-debugger': 'warn',
+      'no-async-promise-executor': 0,
+      'no-useless-escape': 0,
+      indent: ['error', 2, { SwitchCase: 1, VariableDeclarator: 2 }],
+      'no-mixed-spaces-and-tabs': 2,
+      'func-names': 'off',
+      'no-param-reassign': 'off',
+      'object-curly-spacing': 'off',
+      'arrow-parens': 'off',
+      'object-shorthand': 'off',
+      'prefer-destructuring': 'off',
+      'consistent-return': 'off',
+      'comma-dangle': ['error', 'always-multiline'],
+      quotes: ['error', 'single'],
+      'guard-for-in': 'error',
+      'no-var': 2,
+      'no-return-assign': 'off',
+      'max-classes-per-file': ['error', 2],
+      'class-methods-use-this': 'off',
+      'no-continue': 'off',
+      'no-mixed-operators': 'off',
+      'no-plusplus': 'off',
+      'no-await-in-loop': 'off',
+      'no-restricted-syntax': 'off',
+      'prefer-const': 'error',
+      'no-new': 'off',
+      radix: 'error',
+      'prefer-template': 'error',
+      'no-use-before-define': 'off',
+      'no-shadow': 'error',
+      eqeqeq: 'error',
+      'array-callback-return': 'error',
+      'no-extend-native': 'off',
+      '@typescript-eslint/no-explicit-any': 0,
+      '@typescript-eslint/no-unused-vars': 2,
+      '@typescript-eslint/no-empty-object-type': 0,
+      '@typescript-eslint/no-unsafe-function-type': 0,
+      '@typescript-eslint/no-unused-expressions': 0,
+      'react-hooks/exhaustive-deps': 0,
+      'react-refresh/only-export-components': 0,
+    },
+  },
+);
