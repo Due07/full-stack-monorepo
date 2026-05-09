@@ -1,0 +1,35 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsIn, IsNotEmpty, IsOptional, IsString, Length, Matches } from 'class-validator';
+
+export class CreateAdminUserDto {
+  @ApiProperty({ description: '????3 ? 32 ?', example: 'zhangsan' })
+  @IsString()
+  @IsNotEmpty({ message: '???????' })
+  @Length(3, 32, { message: '???????? 3-32 ?' })
+  public username!: string;
+
+  @ApiPropertyOptional({ description: '????', example: '??' })
+  @IsOptional()
+  @IsString()
+  @Length(1, 32)
+  public displayName?: string;
+
+  @ApiPropertyOptional({ description: '??????', example: '13800138000' })
+  @IsOptional()
+  @IsString()
+  @Matches(/^1\d{10}$/)
+  public phone?: string;
+
+  @ApiProperty({ description: '????? 8 ???????????????', example: 'Aa123456' })
+  @IsString({ message: '??????' })
+  @IsNotEmpty({ message: '??????' })
+  @Length(8, 32, { message: '?????????????+?????8?' })
+  @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/, { message: '?????????????+?????8?' })
+  public password!: string;
+
+  @ApiPropertyOptional({ enum: ['user', 'admin'], description: '?????admin ???? user?superAdmin ??? user ? admin' })
+  @IsOptional()
+  @IsString()
+  @IsIn(['user', 'admin'])
+  public role?: 'user' | 'admin';
+}

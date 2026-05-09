@@ -29,7 +29,9 @@
 - 文件内的 **函数 / 变量** 必须遵循 **camelCase** 规则
 - 常量则必须遵循 **CONSTANT_CASE** 规则
 - 所有的 **class** 必须遵循 **PascalCase** 规则
-- **class** 继承不可 >= 3 层， 可以抽离使用 **IOC / DI** or **Strategy Pattern** 模式 or  **Decorator Pattern**！ 
+- **class** 继承不可 >= 3 层， 可以抽离使用 **IOC / DI** or **Strategy Pattern** 模式 or  **Decorator Pattern**！
+- 每次修改涉及流程变动时，需要同步更新对应 **specs.ts文件**，同时已经单元测试 ！
+- 面向对外接口前缀 `/api`, 如：后台接口则是 `/api/admin/xxxx`， 面向用户H5 的则是 `/api/v1/xxxx`, 面向用户默认是 v1 版本
 
 ## 功能目录划分
 - 所有开发的功能应该放在 `/src` 下, 可以使用 `nest g` 来进行创建文件夹结构，以保证统一且简洁

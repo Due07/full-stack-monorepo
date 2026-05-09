@@ -8,6 +8,12 @@
   "packageManager": "pnpm@9.15.0",
   "scripts": {
     "gen:env-types": "node scripts/create-env-types.mjs",
+    "db:migrate": "prisma migrate dev",
+
+    "db:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate",
+    "prisma:studio": "prisma studio",
+
     "start": "npm run gen:env-types && nest start",
     "start:dev": "npm run gen:env-types && nest start --watch",
     "start:test": "npm run gen:env-types && cross-env NODE_ENV=test nest start --watch",
@@ -25,13 +31,25 @@
     "@nestjs/common": "^11.0.0",
     "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.0",
+    "@nestjs/jwt": "^11.0.2",
     "@nestjs/mapped-types": "*",
     "@nestjs/microservices": "^11.1.17",
+    "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/swagger": "^11.4.1",
+    "@prisma/client": "^6.19.3",
+    "argon2": "^0.44.0",
     "axios": "^1.8.4",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1",
     "dotenv": "^17.4.2",
+    "ioredis": "^5.10.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "prisma": "^6.19.3",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
@@ -41,6 +59,8 @@
     "@types/express": "^4.17.21",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.1",
+    "@types/passport": "^1.0.17",
+    "@types/passport-jwt": "^4.0.1",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.18.1",
     "@typescript-eslint/parser": "^8.18.1",

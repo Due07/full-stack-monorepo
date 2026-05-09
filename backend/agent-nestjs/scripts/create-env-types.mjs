@@ -1,9 +1,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ROOT_DIR = process.cwd();
+const [, IMPLEMENT_PATH] = process.argv
+const ROOT_DIR = path.join(IMPLEMENT_PATH, '../../');
 const ENV_EXAMPLE_PATH = path.join(ROOT_DIR, '.env.example');
-const OUTPUT_PATH = path.join(ROOT_DIR, 'src', 'types', 'env.ts');
+const OUTPUT_PATH = path.join(ROOT_DIR, 'src', 'types', 'env.d.ts');
 
 const ENV_TYPE_NAME = 'TEnv';
 const NODE_ENV_TYPE_NAME = 'TNodeEnv';
@@ -71,7 +72,6 @@ ${fields}
 };
 `;
 };
-
 if (!fs.existsSync(ENV_EXAMPLE_PATH)) {
   throw new Error(`.env.example not found at ${ENV_EXAMPLE_PATH}`);
 }

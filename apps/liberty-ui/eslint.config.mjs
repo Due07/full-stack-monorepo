@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   {
-    ignores: ['dist', '.umi', 'coverage'],
+    ignores: ['dist', 'coverage', 'src/.umi', 'src/.umi-production', '.umi', '.umi-production'],
   },
   {
     extends: [js.configs.recommended, ...tseslint.configs.recommended],

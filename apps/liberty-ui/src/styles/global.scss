@@ -1,0 +1,29 @@
+@import '@unocss/reset/normalize.css';
+
+@unocss all;
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f7fa;
+}
+
+a {
+  text-decoration: none;
+}
+
+.json-pretty {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.page-section + .page-section {
+  margin-top: 16px;
+}

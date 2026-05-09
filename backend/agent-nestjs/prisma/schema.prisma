@@ -1,0 +1,86 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserStatus {
+  active
+  disabled
+}
+
+enum UserRole {
+  user
+  admin
+  super_admin
+}
+
+model User {
+  id           String        @id @default(cuid())
+  username     String        @unique
+  displayName  String?       @map("display_name")
+  email        String?       @unique
+  phone        String?       @unique
+  passwordHash String        @map("password_hash")
+  status       UserStatus    @default(active)
+  role         UserRole      @default(user)
+  tokenVersion Int           @default(0) @map("token_version")
+  lastLoginAt  DateTime?     @map("last_login_at")
+  createdAt    DateTime      @default(now()) @map("created_at")
+  updatedAt    DateTime      @updatedAt @map("updated_at")
+  sessions     UserSession[]
+  auditLogs    AuditLog[]    @relation("AuditLogUser")
+  operatedLogs AuditLog[]    @relation("AuditLogOperator")
+
+  @@map("users")
+}
+
+model UserSession {
+  id               String    @id @default(cuid())
+  userId           String    @map("user_id")
+  sessionId        String    @unique @map("session_id")
+  refreshTokenHash String    @map("refresh_token_hash")
+  deviceType       String?   @map("device_type")
+  deviceName       String?   @map("device_name")
+  clientIp         String?   @map("client_ip")
+  userAgent        String?   @map("user_agent")
+  isRevoked        Boolean   @default(false) @map("is_revoked")
+  expiresAt        DateTime  @map("expires_at")
+  lastActiveAt     DateTime? @map("last_active_at")
+  createdAt        DateTime  @default(now()) @map("created_at")
+  updatedAt        DateTime  @updatedAt @map("updated_at")
+  user             User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("user_sessions")
+}
+
+model AuditLog {
+  id             String   @id @default(cuid())
+  userId         String?  @map("user_id")
+  operatorUserId String?  @map("operator_user_id")
+  action         String
+  metadata       Json?
+  createdAt      DateTime @default(now()) @map("created_at")
+  user           User?    @relation("AuditLogUser", fields: [userId], references: [id], onDelete: SetNull)
+  operatorUser   User?    @relation("AuditLogOperator", fields: [operatorUserId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([operatorUserId])
+  @@index([action])
+  @@map("audit_logs")
+}
+
+model SystemSetting {
+  key         String   @id
+  value       String
+  description String?
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  @@map("system_settings")
+}

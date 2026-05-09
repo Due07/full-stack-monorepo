@@ -1,0 +1,32 @@
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import { IsNotEmpty, IsOptional, IsString, Length, Matches } from 'class-validator';
+
+export class LoginDto {
+  @ApiProperty({ description: '???????? username ? phone', example: 'zhangsan' })
+  @IsString({ message: '??????' })
+  @IsNotEmpty({ message: '??????' })
+  @Length(3, 32, { message: '??????? 3-32 ?' })
+  public account!: string;
+
+  @ApiProperty({ description: '????', example: 'Aa123456' })
+  @IsString({ message: '??????' })
+  @IsNotEmpty({ message: '??????' })
+  @Length(8, 32, { message: '?????????????+?????8?' })
+  @Matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/, { message: '?????????????+?????8?' })
+  public password!: string;
+
+  @ApiPropertyOptional({ description: '???????', example: 'Chrome on Windows' })
+  @IsOptional()
+  @IsString()
+  public deviceName?: string;
+
+  @ApiPropertyOptional({ description: '???????', example: 'web' })
+  @IsOptional()
+  @IsString()
+  public deviceType?: string;
+
+  @ApiPropertyOptional({ description: '???????????????', example: '13800138000' })
+  @IsOptional()
+  @Matches(/^1\d{10}$/)
+  public phone?: string;
+}

@@ -8,19 +8,29 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@ant-design/icons": "^6.2.2",
+    "antd": "^6.3.7",
+    "clsx": "^2.1.1",
+    "dayjs": "^1.11.20",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "umi": "^4.6.47"
+    "umi": "^4.6.47",
+    "zustand": "^5.0.12"
   },
   "devDependencies": {
     "@eslint/js": "^8.57.1",
-    "eslint": "^8.57.1",
-    "typescript": "^5.7.2",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
+    "@unocss/postcss": "^66.6.8",
+    "@unocss/preset-uno": "^66.6.8",
+    "@unocss/reset": "^66.6.8",
+    "eslint": "^8.57.1",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^15.15.0",
-    "typescript-eslint": "^7.18.0"
+    "sass": "^1.99.0",
+    "typescript": "^5.7.2",
+    "typescript-eslint": "^7.18.0",
+    "unocss": "^66.6.8"
   }
 }

@@ -9,10 +9,10 @@
     "dev:ui": "pnpm --dir apps/liberty-ui dev",
     "build:ui": "pnpm --dir apps/liberty-ui build",
 
-    "dev:backend": "pnpm --dir backend start:dev",
-    "build:backend": "pnpm --dir backend build",
-    "lint:backend": "pnpm --dir backend lint",
-    "test:backend": "pnpm --dir backend test"
+    "dev:backend": "pnpm --dir backend/agent-nestjs start:dev",
+    "build:backend": "pnpm --dir backend/agent-nestjs build",
+    "lint:backend": "pnpm --dir backend/agent-nestjs lint",
+    "test:backend": "pnpm --dir backend/agent-nestjs test"
   },
   "engines": {
     "node": ">=20"

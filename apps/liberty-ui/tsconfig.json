@@ -1,4 +1,5 @@
 {
+  "extends": "./src/.umi/tsconfig.json",
   "compilerOptions": {
     "target": "ES2021",
     "module": "ESNext",
@@ -6,7 +7,15 @@
     "jsx": "react-jsx",
     "strict": true,
     "esModuleInterop": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@@/*": ["src/.umi/*"],
+      "@utils/*": ["../../utils/*"],
+      "@contants": ["src/contants/index.ts"],
+      "@contants/*": ["src/contants/*"]
+    }
   },
   "include": ["src", ".umirc.ts"]
 }

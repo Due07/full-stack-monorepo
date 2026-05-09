@@ -1,0 +1,23 @@
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.infoItem {
+  padding: 14px 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+.infoLabel {
+  margin-bottom: 8px;
+  color: #8c8c8c;
+  font-size: 13px;
+}
+
+.infoValue {
+  word-break: break-word;
+  font-size: 14px;
+}
